@@ -22,14 +22,14 @@ above.  It is backwards compatible with earlier versions as well, except for the
 that two additional Solr fields are required for this plugin to work.
 
 
-Instructions for Building Apache ManifoldCF Plugin for Apache Solr 8.x from Source
+Instructions for Building Apache ManifoldCF Plugin for Apache Solr 9.x from Source
 ------------------------------------------------------------------------------
 
-1. Download the Java SE 8 JDK (Java Development Kit), or greater, from
+1. Download the Java SE 11 JDK (Java Development Kit), or greater, from
    http://www.oracle.com/technetwork/java/index.html.
    You will need the JDK installed, and the %JAVA_HOME%\bin directory included
    on your command path.  To test this, issue a "java -version" command from your
-   shell and verify that the Java version is 1.8 or greater.
+   shell and verify that the Java version is 1.11 or greater.
 
 2. Download and install Maven 3.0 or later.  Maven installation and configuration
    instructions can be found here:  http://maven.apache.org
@@ -42,7 +42,7 @@ Instructions for Building Apache ManifoldCF Plugin for Apache Solr 8.x from Sour
 
    The JAR package can be found in the target folder:
 
-   target/apache-manifoldcf-solr-8.x-plugin-<VERSION>.jar where <VERSION> is the release version
+   target/apache-manifoldcf-solr-9.x-plugin-<VERSION>.jar where <VERSION> is the release version
 
 
 Getting Started
@@ -191,7 +191,7 @@ you will still need to use this Solr component to modify the user query.  All yo
 Licensing
 ---------
 
-Apache ManifoldCF Plugin for Apache Solr 8.x is licensed under the
+Apache ManifoldCF Plugin for Apache Solr 9.x is licensed under the
 Apache License 2.0. See the files called LICENSE.txt and NOTICE.txt
 for more information.
 
@@ -220,7 +220,7 @@ code and source code.
 The following provides more details on the included software that
 may be subject to export controls on cryptographic software:
 
-  The Apache ManifoldCF Solr 8.x Plugin does not include any
+  The Apache ManifoldCF Solr 9.x Plugin does not include any
   implementation or usage of cryptographic software at this time.
   
 Contact

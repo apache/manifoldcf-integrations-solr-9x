@@ -1,10 +1,7 @@
-Apache ManifoldCF Plugin for Apache Solr 8.x change Log
+Apache ManifoldCF Plugin for Apache Solr 9.x change Log
 $Id: CHANGES.txt 1825314 2018-02-25 16:51:32Z shinichiro $
 
-======================= 2.3-dev ======================
+======================= 2.2-dev ======================
 
-
-======================= Release 2.2 ======================
-
-Initial commit: Upgraded to Solr 8.3.1.
+Initial commit: Upgraded to Solr 9.0.0.
 (Karl Wright)
