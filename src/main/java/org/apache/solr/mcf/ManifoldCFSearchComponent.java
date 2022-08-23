@@ -16,37 +16,50 @@
 */
 package org.apache.solr.mcf;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.Reader;
+import java.net.URLEncoder;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import org.apache.http.HttpResponse;
 import org.apache.http.ParseException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.config.RequestConfig;
+import org.apache.http.client.methods.HttpGet;
 import org.apache.http.config.SocketConfig;
 import org.apache.http.entity.ContentType;
+import org.apache.http.impl.client.DefaultRedirectStrategy;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
-import org.apache.lucene.index.*;
-import org.apache.lucene.search.*;
+import org.apache.http.util.EntityUtils;
+import org.apache.lucene.index.Term;
+import org.apache.lucene.search.BooleanClause;
+import org.apache.lucene.search.BooleanQuery;
+import org.apache.lucene.search.ConstantScoreQuery;
+import org.apache.lucene.search.Query;
+import org.apache.lucene.search.TermQuery;
 import org.apache.solr.common.SolrException;
 import org.apache.solr.common.params.CommonParams;
 import org.apache.solr.common.params.ShardParams;
 import org.apache.solr.common.params.SolrParams;
 import org.apache.solr.common.util.NamedList;
+import org.apache.solr.core.CloseHook;
+import org.apache.solr.core.SolrCore;
 import org.apache.solr.handler.component.ResponseBuilder;
 import org.apache.solr.handler.component.SearchComponent;
-import org.apache.solr.core.CloseHook;
 import org.apache.solr.util.plugin.SolrCoreAware;
-import org.apache.solr.core.SolrCore;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.HttpResponse;
-import org.apache.http.util.EntityUtils;
-import org.apache.http.impl.client.DefaultRedirectStrategy;
-import org.slf4j.*;
-
-import java.io.*;
-import java.nio.charset.Charset;
-import java.nio.charset.StandardCharsets;
-import java.util.*;
-import java.net.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
 * SearchComponent plugin for ManifoldCF-specific document-level access control.
@@ -432,7 +445,7 @@ public class ManifoldCFSearchComponent extends SearchComponent implements SolrCo
   
   /** CloseHook implementation.
   */
-  protected class CloseHandler extends CloseHook
+  protected class CloseHandler implements CloseHook
   {
     public CloseHandler()
     {
